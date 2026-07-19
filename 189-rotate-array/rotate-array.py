@@ -4,11 +4,15 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         n=len(nums)
-        if k==0:
-            return nums
-        rotate = n%k
+        k%=n
 
-        for i in range (0,k):
-            e=nums.pop()
-            nums.insert(0,e)
-        
+        def rev(l,r):
+            while l<r:
+                nums[l],nums[r] = nums[r],nums[l]
+                l+=1
+                r-=1
+        rev(0,n-1)
+        rev(0,k-1)
+        rev(k,n-1)
+
+       
